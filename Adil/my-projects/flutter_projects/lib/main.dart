@@ -6,9 +6,11 @@ import 'controllers/DogController.dart';
 import 'views/AddDogPage.dart';
 import 'views/EditDogPage.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,18 +18,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DogsPage(),
+      home: const DogsPage(),
     );
   }
 }
 
 class DogsPage extends StatefulWidget {
+  const DogsPage({super.key});
+
   @override
   _DogsPageState createState() => _DogsPageState();
 }
 
 class _DogsPageState extends State<DogsPage> {
-  DogController _controller = DogController();
+  final DogController _controller = DogController();
   List<Dog> _dogs = [];
 
   @override
@@ -47,7 +51,7 @@ class _DogsPageState extends State<DogsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dogs App'),
+        title: const Text('Dogs App'),
       ),
       body: ListView.builder(
         itemCount: _dogs.length,
@@ -60,7 +64,7 @@ class _DogsPageState extends State<DogsPage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
-                  icon: Icon(Icons.edit),
+                  icon: const Icon(Icons.edit),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -73,9 +77,9 @@ class _DogsPageState extends State<DogsPage> {
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.delete),
+                  icon: const Icon(Icons.delete),
                   onPressed: () async {
-                    await _controller.deleteDog(dog.id!); // Assuming ID is non-null for fetched dogs
+                    await _controller.deleteDog(dog.id!);
                     _loadDogs();
                   },
                 ),
@@ -85,7 +89,7 @@ class _DogsPageState extends State<DogsPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           Navigator.push(
             context,

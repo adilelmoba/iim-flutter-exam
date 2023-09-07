@@ -16,7 +16,7 @@ class _AddDogPageState extends State<AddDogPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Dog'),
+        title: const Text('Add Dog'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -24,15 +24,15 @@ class _AddDogPageState extends State<AddDogPage> {
           children: [
             TextField(
               controller: _nameController,
-              decoration: InputDecoration(hintText: 'Name'),
+              decoration: const InputDecoration(hintText: 'Name'),
             ),
             TextField(
               controller: _ageController,
-              decoration: InputDecoration(hintText: 'Age'),
+              decoration: const InputDecoration(hintText: 'Age'),
               keyboardType: TextInputType.number,
             ),
             ElevatedButton(
-              child: Text('Add Dog'),
+              child: const Text('Add Dog'),
               onPressed: () async {
                 if (_nameController.text.isNotEmpty &&
                     _ageController.text.isNotEmpty) {
